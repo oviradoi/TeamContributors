@@ -136,8 +136,33 @@ namespace TeamContributors.Pages
         {
             base.Initialize(sender, e);
 
-            // Kick off the refresh
-            await this.RefreshUsersAsync();
+            // If the user navigated back to this page, there could be saved context information that is passed in
+            var sectionContext = e.Context as ContributorsContext;
+            if (sectionContext != null)
+            {
+                // Restore the context instead of refreshing
+                ContributorsContext context = sectionContext;
+                this.Users = context.Users;
+            }
+            else
+            {
+                // Kick off the refresh
+                await this.RefreshUsersAsync();
+            }
+        }
+
+        public override void SaveContext(object sender, PageSaveContextEventArgs e)
+        {
+            base.SaveContext(sender, e);
+
+            ContributorsContext context = new ContributorsContext();
+            context.Users = this.Users;
+            e.Context = context;
+        }
+
+        private class ContributorsContext
+        {
+            public ObservableCollection<TeamFoundationIdentity> Users { get; set; }
         }
     }
 }
