@@ -1,14 +1,11 @@
-﻿using Microsoft.TeamFoundation.Client;
-using Microsoft.TeamFoundation.Controls;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿// <copyright file="TeamExplorerBase.cs" company="Microsoft Corporation">Copyright Microsoft Corporation. All Rights Reserved. This code released under the terms of the Microsoft Public License (MS-PL, http://opensource.org/licenses/ms-pl.html.) This is sample code only, do not use in production environments.</copyright>
 namespace TeamContributors.Base
 {
+    using System;
+    using System.ComponentModel;
+    using Microsoft.TeamFoundation.Client;
+    using Microsoft.TeamFoundation.Controls;
+
     /// <summary>
     /// Team Explorer extension common base class.
     /// </summary>
