@@ -64,6 +64,10 @@
     <Compile Include="Base\TeamExplorerBase.cs" />
     <Compile Include="Base\TeamExplorerBaseNavigationItem.cs" />
     <Compile Include="Base\TeamExplorerBasePage.cs" />
+    <Compile Include="Pages\ShelvesetsPage.cs" />
+    <Compile Include="Pages\ShelvesetsPageView.xaml.cs">
+      <DependentUpon>ShelvesetsPageView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\TeamContributorsPage.cs" />
     <Compile Include="Pages\TeamContributorsView.xaml.cs">
       <DependentUpon>TeamContributorsView.xaml</DependentUpon>
@@ -131,6 +135,10 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Pages\ShelvesetsPageView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\TeamContributorsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

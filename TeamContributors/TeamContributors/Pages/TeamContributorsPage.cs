@@ -36,7 +36,7 @@ namespace TeamContributors.Pages
 
         public TeamContributorsPage()
         {
-            this.Title = "First page title";
+            this.Title = "Team Contributors";
             this.PageContent = new TeamContributorsView();
             this.View.ParentSection = this;
             ViewChangesets = new RelayCommand(id => ViewChangesetsCommand((TeamFoundationIdentity)id));
@@ -53,7 +53,7 @@ namespace TeamContributors.Pages
             ITeamExplorer teamExplorer = (ITeamExplorer)ServiceProvider.GetService(typeof(ITeamExplorer));
             if (teamExplorer != null)
             {
-                teamExplorer.NavigateToPage(new Guid(TeamExplorerPageIds.FindShelvesets), null);
+                teamExplorer.NavigateToPage(new Guid(ShelvesetsPage.PageId), null);
             }
         }
 
