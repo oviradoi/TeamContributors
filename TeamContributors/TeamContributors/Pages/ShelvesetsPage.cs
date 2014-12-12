@@ -1,6 +1,7 @@
 ﻿using Microsoft.TeamFoundation.Client;
 using Microsoft.TeamFoundation.Controls;
 using Microsoft.TeamFoundation.Framework.Client;
+using Microsoft.TeamFoundation.MVVM;
 using Microsoft.TeamFoundation.VersionControl.Client;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using TeamContributors.Base;
 
 namespace TeamContributors.Pages
@@ -26,11 +28,15 @@ namespace TeamContributors.Pages
             set { _shelvesets = value; RaisePropertyChanged("Shelvesets"); }
         }
 
+        public ICommand ShelvesetDetails { get; private set; }
+
         public ShelvesetsPage()
         {
             this.Title = "View Shelvesets";
             this.PageContent = new ShelvesetsPageView();
             this.View.ParentSection = this;
+
+            ShelvesetDetails = new RelayCommand(p => ShelvesetDetailsCommand(p as Shelveset));
         }
 
         protected ShelvesetsPageView View
@@ -47,6 +53,15 @@ namespace TeamContributors.Pages
             {
                 _identity = id;
                 this.Refresh();
+            }
+        }
+
+        private void ShelvesetDetailsCommand(Shelveset shelveset)
+        {
+            ITeamExplorer teamExplorer = this.GetService<ITeamExplorer>();
+            if (teamExplorer != null && shelveset != null)
+            {
+                teamExplorer.NavigateToPage(new Guid(TeamExplorerPageIds.ShelvesetDetails), shelveset);
             }
         }
 

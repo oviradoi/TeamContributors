@@ -18,6 +18,9 @@
         <ListView Grid.Row="1" ItemsSource="{Binding Path=ParentSection.Shelvesets}" BorderThickness="0"
                       SelectionMode="Single" ScrollViewer.HorizontalScrollBarVisibility="Hidden"
                       ItemContainerStyle="{StaticResource {x:Type ListViewItem}}">
+            <!--<ListView.InputBindings>
+                <MouseBinding MouseAction="LeftDoubleClick" Command="{Binding Path=ParentSection.ShelvesetDetails}" />
+            </ListView.InputBindings>-->
             <ListView.View>
                 <GridView>
                     <GridView.ColumnHeaderContainerStyle>
@@ -29,7 +32,13 @@
                         <GridViewColumnHeader Content="Shelveset"/>
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
-                                <TextBlock Text="{Binding Path=Name}"/>
+                                <TextBlock Text="{Binding Path=Name}">
+                                    <TextBlock.InputBindings>
+                                        <MouseBinding MouseAction="LeftDoubleClick" 
+                                                      Command="{Binding RelativeSource={RelativeSource AncestorType=UserControl}, Path=ParentSection.ShelvesetDetails}" 
+                                                      CommandParameter="{Binding}" />
+                                    </TextBlock.InputBindings>
+                                </TextBlock>
                             </DataTemplate>
                         </GridViewColumn.CellTemplate>
                     </GridViewColumn>
