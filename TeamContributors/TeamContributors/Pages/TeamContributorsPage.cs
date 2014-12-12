@@ -53,7 +53,7 @@ namespace TeamContributors.Pages
             ITeamExplorer teamExplorer = (ITeamExplorer)ServiceProvider.GetService(typeof(ITeamExplorer));
             if (teamExplorer != null)
             {
-                teamExplorer.NavigateToPage(new Guid(ShelvesetsPage.PageId), null);
+                teamExplorer.NavigateToPage(new Guid(ShelvesetsPage.PageId), item);
             }
         }
 
