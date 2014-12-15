@@ -28,6 +28,11 @@ namespace TeamContributors.Pages
             set { _shelvesets = value; RaisePropertyChanged("Shelvesets"); }
         }
 
+        public string UserName
+        {
+            get { return _identity != null ? _identity.UniqueName : ""; }
+        }
+
         public ICommand ShelvesetDetails { get; private set; }
 
         public ShelvesetsPage()
@@ -52,6 +57,7 @@ namespace TeamContributors.Pages
             if (id != null)
             {
                 _identity = id;
+                RaisePropertyChanged("UserName");
                 this.Refresh();
             }
         }

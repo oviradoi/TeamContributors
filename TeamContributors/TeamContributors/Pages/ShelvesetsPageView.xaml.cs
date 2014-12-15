@@ -33,10 +33,5 @@ namespace TeamContributors.Pages
 
             set { SetValue(ParentSectionProperty, value); }
         }
-
-        private void ListView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-            int x = 0;
-        }
     }
 }
